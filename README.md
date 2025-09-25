@@ -47,10 +47,21 @@ The pipeline is composed of multiple processing steps, each handled by a separat
 - ***quast*** – Evaluates the quality of genome assemblies (N50, completeness, etc.). Uses reference and GFF files from the samplesheet.
    -  **Inputs**: FASTA files
    -  **Outputs**: QUAST output directory (${sample}) and TSV reports.
+     
 - ***prokka*** – Performs genome annotation to identify coding sequences, functional elements and 16S rRNA sequences (primarily for bacteria).
    -  **Inputs**: FASTA files
    -  **Outputs**: Annotation files (GFF, GBK, FNA, FAA, FFN, TSV, etc.).
-- ***barrnap*** – Identifies rRNA sequences (e.g., 16S, 23S, 5S).
-- ***extract_16S_sequences*** – Extracts 16S rRNA sequences for downstream phylogenetic or taxonomic analysis.
-- ***metaeuk*** – Performs protein-level annotation, primarily for fungal species.
+     
+- ***extract_16S_sequences*** – Runs only on ```bacterial``` samples. Extracts 16S rRNA sequences for downstream phylogenetic or taxonomic analysis.
+  - **Inputs**: TSV and FFN files from PROKKA.
+  - **Outputs**: 16S_csv, 16S_fasta files containing extracted 16S sequences and metadata.
+   
+- ***metaeuk*** – Performs protein-level gene prediction for fungal samples using MetaEuk with a provided protein reference.
+  - **Inputs**: FASTA files and protein reference from the samplesheet.
+  - **Outputs**: Directory (metaeuk_output) containing gene prediction results (FASTA, GFF, etc.).
+
+- ***barrnap*** – Annotates rRNA sequences (e.g., 18S, 5.8S, 28S) in fungal assemblies.
+    - **Inputs**: FASTA files from GFA_TO_FASTA.
+    - **Outputs**: GFF3 file (${sample}_rrna.gff3), rRNA FASTA, 18S-specific FASTA and CSV, and a log file.
+
 
