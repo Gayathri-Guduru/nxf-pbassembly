@@ -6,7 +6,7 @@ A basic pipeline for assembling genomes of isolates sequenced with PacBio HiFi.
 ## Quick start
 ```
 git clone https://github.com/Gayathri-Guduru/pacbio-assembly-nextflow.git
-cd nxf-pbassembly
+cd pacbio-assembly-nextflow
 
 If running locally or VM:
 nextflow run main.nf -profile slurm --input_type fastq
