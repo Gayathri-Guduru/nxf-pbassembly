@@ -32,7 +32,7 @@ The input file is ```samplesheet2.csv``` present in the ```data``` folder. It co
 
 ## Pipeline Workflow
 
-The pipeline is composed of multiple processing steps, each handled by a separate Nextflow (.nf) module. The workflow typically proceeds in the following order:
+The pipeline is composed of multiple processing steps, each handled by a separate Nextflow (.nf) module present in the ```processes``` folder. The workflow typically proceeds in the following order:
 
 - fastqc – Performs quality control on raw sequencing reads.
 - longqc – Additional QC tailored for long-read sequencing data.
