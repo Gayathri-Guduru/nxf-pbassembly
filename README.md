@@ -30,5 +30,18 @@ The input file is ```samplesheet2.csv``` present in the ```data``` folder. It co
 - fastq: Links to raw sequencing reads (.fastq.gz files). In this case, files are stored in an S3 bucket.
 - genome_size: Estimated genome size (in Mb).
 
+## Pipeline Workflow
 
+The pipeline is composed of multiple processing steps, each handled by a separate Nextflow (.nf) module. The workflow typically proceeds in the following order:
+
+- fastqc – Performs quality control on raw sequencing reads.
+- longqc – Additional QC tailored for long-read sequencing data.
+- bam2fastq – Converts BAM files to FASTQ format (if the input files are bam files and not fastq).
+- assembly (flye / hifiasm) – Assembles genomes from PACBIO data using assembly tools (e.g., Flye and hifiasm).
+- gfa_to_fasta – Converts assembly graph files (GFA) into FASTA format.
+- quast – Evaluates the quality of genome assemblies (N50, completeness, etc.).
+- prokka – Performs genome annotation to identify coding sequences and functional elements.
+- barrnap – Identifies rRNA sequences (e.g., 16S, 23S, 5S).
+- extract_16S_sequences – Extracts 16S rRNA sequences for downstream phylogenetic or taxonomic analysis.
+- metaeuk – Performs protein-level annotation, primarily for fungal species.
 
