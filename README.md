@@ -9,11 +9,10 @@ git clone https://github.com/Gayathri-Guduru/pacbio-assembly-nextflow.git
 cd nxf-pbassembly
 ```
 
-### If running locally or VM:
-
+- If running locally or VM:
 ```nextflow run main.nf -profile slurm --input_type fastq ```
 
-### If running on HPC:
+- If running on HPC:
 ``` sbatch main.sh ```
 
 ## Input
