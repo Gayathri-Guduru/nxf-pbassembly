@@ -5,7 +5,7 @@ The nxf-pbassembly pipeline processes PacBio HiFi reads to perform genome assemb
 
 ## Quick start
 ```
-git clone https://github.com/Gayathri-Guduru/pacbio-assembly-nextflow.git
+git clone https://github.com/Gayathri-Guduru/nxf-pbassembly.git
 cd nxf-pbassembly
 ```
 
