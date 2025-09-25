@@ -1,7 +1,7 @@
 # nxf-pbassembly
 
 ## Introduction
-A basic pipeline for assembling genomes of isolates sequenced with PacBio HiFi. 
+The nxf-pbassembly pipeline processes PacBio HiFi reads to perform genome assembly and annotation for both bacterial and fungal samples.
 
 ## Quick start
 ```
@@ -36,11 +36,20 @@ The pipeline is composed of multiple processing steps, each handled by a separat
 
 - fastqc – Performs quality control on raw sequencing reads.
 - longqc – Additional QC tailored for long-read sequencing data.
-- bam2fastq – Converts BAM files to FASTQ format. If the input files are already fastq, then use ```--input_type fastq```. The default takes ```bam``` as input
+- bam2fastq – Converts BAM files to FASTQ format. If the input files are already fastq, then use ```--input_type fastq```. The default takes ```bam``` as input.
+  
 - assembly (flye / hifiasm) – Assembles genomes from PACBIO data using assembly tools (e.g., Flye and hifiasm).
-- gfa_to_fasta – Converts assembly graph files (GFA) into FASTA format.
-- quast – Evaluates the quality of genome assemblies (N50, completeness, etc.).
-- prokka – Performs genome annotation to identify coding sequences and functional elements.
+  - Inputs: FASTQ files
+  - HIFIASM Outputs: Primary contigs (*.asm.bp.p_ctg.gfa), alternate contigs, unitigs, and an assembly status file (${sample}.assembly_status).
+  - FLYE Outputs: Primary contigs (assembly.fasta), assembly graph (assembly_graph.gfa), and other metadata files, plus an assembly status file (${sample}.assembly_status).
+ 
+- gfa_to_fasta – Unlike Flye, HIFIASM only outputs gfa and not fasta file, conversion of Primary contigs (*.asm.bp.p_ctg.gfa) into FASTA format is needed for further downstream annotation.
+- quast – Evaluates the quality of genome assemblies (N50, completeness, etc.). Uses reference and GFF files from the samplesheet.
+   -  Inputs: FASTA files
+   -  Outputs: QUAST output directory (${sample}) and TSV reports.
+- prokka – Performs genome annotation to identify coding sequences, functional elements and 16S rRNA sequences (primarily for bacteria).
+   -  Inputs: FASTA files
+   -  Outputs: Annotation files (GFF, GBK, FNA, FAA, FFN, TSV, etc.).
 - barrnap – Identifies rRNA sequences (e.g., 16S, 23S, 5S).
 - extract_16S_sequences – Extracts 16S rRNA sequences for downstream phylogenetic or taxonomic analysis.
 - metaeuk – Performs protein-level annotation, primarily for fungal species.
