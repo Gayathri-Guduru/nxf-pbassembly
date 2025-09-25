@@ -56,7 +56,7 @@ The pipeline is composed of multiple processing steps, each handled by a separat
   - **Outputs**: 16S_csv, 16S_fasta files containing extracted 16S sequences and metadata.
    
 - ***metaeuk*** – Performs protein-level gene prediction for fungal samples using MetaEuk with a provided protein reference.
-  - **Inputs**: FASTA files and protein reference from the samplesheet.
+  - **Inputs**: FASTA files from GFA_TO_FASTA and protein reference from the samplesheet.
   - **Outputs**: Directory (metaeuk_output) containing gene prediction results (FASTA, GFF, etc.).
 
 - ***barrnap*** – Annotates rRNA sequences (e.g., 18S, 5.8S, 28S) in fungal assemblies.
