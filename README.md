@@ -36,7 +36,7 @@ The pipeline is composed of multiple processing steps, each handled by a separat
 
 - fastqc – Performs quality control on raw sequencing reads.
 - longqc – Additional QC tailored for long-read sequencing data.
-- bam2fastq – Converts BAM files to FASTQ format (if the input files are bam files and not fastq).
+- bam2fastq – Converts BAM files to FASTQ format. If the input files are already fastq, then use ```--input_type fastq```. The default takes ```bam``` as input
 - assembly (flye / hifiasm) – Assembles genomes from PACBIO data using assembly tools (e.g., Flye and hifiasm).
 - gfa_to_fasta – Converts assembly graph files (GFA) into FASTA format.
 - quast – Evaluates the quality of genome assemblies (N50, completeness, etc.).
