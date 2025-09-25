@@ -1,0 +1,10 @@
+name: my-env
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - hifiasm=0.19.2
+  - samtools=1.16.1
+  - fastqc=0.11.8
+  - quast=5.2.0
