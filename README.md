@@ -31,7 +31,8 @@ The input file is ```samplesheet2.csv``` present in the ```data``` folder. It co
 
 ## Pipeline Workflow
 
-<img width="519" height="701" alt="pacbio_assembly_workflow" src="https://github.com/user-attachments/assets/bd51881c-9a11-4de0-8495-0edf50dfc5ed" />
+<img width="519" height="702" alt="pacbio_assembly_workflow" src="https://github.com/user-attachments/assets/8e642001-86e3-4717-9c2b-a024afb31cdc" />
+
 
 The pipeline is composed of multiple processing steps, each handled by a separate Nextflow (.nf) module present in the ```processes``` folder. The workflow typically proceeds in the following order:
 
